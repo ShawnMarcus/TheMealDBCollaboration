@@ -2,7 +2,23 @@
 
 * {
   box-sizing: border-box;
+  background-color: #c9c1b5;
 }
+
+.button-primary {
+  background-color: bisque;
+  border-color: orange;
+  border-radius: 16px;
+  font-size: 32px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 
 body {
   display: flex;
@@ -62,7 +78,7 @@ img {
     bottom: 80px;
     transform: translateX(100%);
     transition: transform 0.4s ease-in-out;
-  }
+  } 
   
   .social-panel-container.visible {
     transform: translateX(-10px);

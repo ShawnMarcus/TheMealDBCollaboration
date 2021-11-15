@@ -25,15 +25,19 @@ const createMeal = (meal) => {
     const newInnerHTML = `
     <div class="row">
       <div class="columns five">
+      <center>
         <img src="${meal.strMealThumb}" alt="Meal Image">
+        </center>
         ${meal.strCategory ? `<p><strong>Category:</strong> ${meal.strCategory}</p>` : ''}
         ${meal.strArea ? `<p><strong>Area:</strong> ${meal.strArea}</p>` : ''}
         ${meal.strTags ? `<p><strong>Tags:</strong> ${meal.strTags.split(',').join(', ')}</p>` : ''}
+      
         <h5>Ingredients:</h5>
         <ul>
           ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
         </ul>
       </div>
+    
       <div class="columns seven">
         <h4>${meal.strMeal}</h4>
         <p>${meal.strInstructions}</p>
