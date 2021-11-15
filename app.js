@@ -1,5 +1,7 @@
 // https://www.themealdb.com/api/json/v1/1/random.php.
 
+// we had to use the single recipe option because the multi recipe option required patreon status :(
+
 const get_meal_btn = document.getElementById('get_meal');
 const meal_container = document.getElementById('meal');
 
@@ -23,31 +25,34 @@ const createMeal = (meal) => {
         break;
       }
     }
-    // strMealThumb gives us a thumbnail image, strCategory gives us the Category of Meal, and strArea give us a geographical region (where the meal comes from). strTags help divide the ingredients and are joined by commas with spaces to make them easier to read.
+
+    // strMealThumb gives us a thumbnail image, strCategory gives us the Category of Meal, and strArea give us a geographical region (where the meal comes from). strTags help classify the recipe according to dessert, street food, etc., and are joined by commas with spaces to make them easier to read.
     const newInnerHTML = `
     <div class="row">
       <div class="columns five">
       <center>
         <img src="${meal.strMealThumb}" alt="Meal Image">
         </center>
-        ${meal.strCategory ? `<p><strong>Category:</strong> ${meal.strCategory}</p>` : ''}
-        ${meal.strArea ? `<p><strong>Area:</strong> ${meal.strArea}</p>` : ''}
-        ${meal.strTags ? `<p><strong>Tags:</strong> ${meal.strTags.split(',').join(', ')}</p>` : ''}
+        ${meal.strCategory ? `<h1><strong>Category:</strong> ${meal.strCategory}</h1>` : ''}
+        ${meal.strArea ? `<h1><strong>Area:</strong> ${meal.strArea}</h1>` : ''}
+        ${meal.strTags ? `<h1><strong>Tags:</strong> ${meal.strTags.split(',').join(', ')}</h1>` : ''}
       
-        <h5>Ingredients:</h5>
+        <h1>Ingredients:</h1>
+        <h2>
         <ul>
           ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
         </ul>
+        </h2>
       </div>
     
       <div class="columns seven">
-        <h4>${meal.strMeal}</h4>
-        <p>${meal.strInstructions}</p>
+        <h1>${meal.strMeal}</h1>
+        <h2>${meal.strInstructions}</h2>
       </div>
     </div>
     ${meal.strYoutube ? `
     <div class="row">
-      <h5>Video Recipe</h5>
+      <h3>Video Recipe</h3>
       <div class="videoWrapper">
         <iframe width="420" height="315"
         src="https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}">
@@ -59,15 +64,4 @@ const createMeal = (meal) => {
   meal_container.innerHTML = newInnerHTML;
 }
 
-// SOCIAL PANEL JS
-const floating_btn = document.querySelector('.floating-btn');
-const close_btn = document.querySelector('.close-btn');
-const social_panel_container = document.querySelector('.social-panel-container');
 
-floating_btn.addEventListener('click', () => {
-  social_panel_container.classList.toggle('visible')
-});
-
-close_btn.addEventListener('click', () => {
-  social_panel_container.classList.remove('visible')
-});
