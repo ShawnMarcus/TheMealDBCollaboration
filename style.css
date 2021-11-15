@@ -56,6 +56,7 @@ img {
     text-align: center;
   }
 
+/* The video wrapper helps make sure the YouTube video is responsive. It came from CSS Tricks webpage. */
 .videoWrapper {
     position: relative;
     padding-bottom: 56.25%;

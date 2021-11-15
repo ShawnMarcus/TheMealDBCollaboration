@@ -15,6 +15,7 @@ const createMeal = (meal) => {
     const ingredients = [];
     // Get all ingredients from the object. Up to 20
     for(let i=1; i<=20; i++) {
+      // strIngredients gives us the ingredients list, strMeasure gives us the amounts.
       if(meal[`strIngredient${i}`]) {
         ingredients.push(`${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`)
       } else {
@@ -22,6 +23,7 @@ const createMeal = (meal) => {
         break;
       }
     }
+    // strMealThumb gives us a thumbnail image, strCategory gives us the Category of Meal, and strArea give us a geographical region (where the meal comes from). strTags help divide the ingredients and are joined by commas with spaces to make them easier to read.
     const newInnerHTML = `
     <div class="row">
       <div class="columns five">
